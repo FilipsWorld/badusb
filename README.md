@@ -1,2 +1,2 @@
 # badusb
-Bad USB payloads, scripts, expamles, documentations
+Bad USB payloads, scripts, expamles and documentations.
