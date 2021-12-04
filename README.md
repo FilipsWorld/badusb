@@ -1,2 +1,4 @@
 # badusb
-Bad USB payloads, scripts, expamles and documentations.
+My Bad USB payloads, scripts, expamles and documentations.
+
+# Still in development!
